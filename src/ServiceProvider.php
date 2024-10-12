@@ -32,13 +32,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');
         
         if (Schema::hasTable(config('pagebuilder.storage.database.prefix').'settings')) {
-            if ($this->app->runningInConsole()) {
-                $this->commands([
-                    CreateTheme::class,
-                    PublishTheme::class,
-                    PublishDemo::class,
-                ]);
-            } elseif (empty(config('pagebuilder'))) {
+            if (empty(config('pagebuilder'))) {
                 throw new Exception("No PHPageBuilder config found, please run: php artisan vendor:publish --provider=\"HansSchouten\LaravelPageBuilder\ServiceProvider\" --tag=config");
             }
 
@@ -55,5 +49,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->publishes([
             __DIR__ . '/../themes/demo' => base_path(config('pagebuilder.theme.folder_url') . '/demo'),
         ], 'demo-theme');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                CreateTheme::class,
+                PublishTheme::class,
+                PublishDemo::class,
+            ]);
+        }
     }
 }
