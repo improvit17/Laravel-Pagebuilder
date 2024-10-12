@@ -46,14 +46,14 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             $this->app->singleton('phpPageBuilder', function($app) {
                 return new PHPageBuilder(config('pagebuilder') ?? []);
             });
-            $this->app->make('phpPageBuilder');
-
-            $this->publishes([
-                __DIR__ . '/../config/pagebuilder.php' => config_path('pagebuilder.php'),
-            ], 'config');
-            $this->publishes([
-                __DIR__ . '/../themes/demo' => base_path(config('pagebuilder.theme.folder_url') . '/demo'),
-            ], 'demo-theme');
         }
+        $this->app->make('phpPageBuilder');
+
+        $this->publishes([
+            __DIR__ . '/../config/pagebuilder.php' => config_path('pagebuilder.php'),
+        ], 'config');
+        $this->publishes([
+            __DIR__ . '/../themes/demo' => base_path(config('pagebuilder.theme.folder_url') . '/demo'),
+        ], 'demo-theme');
     }
 }
