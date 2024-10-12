@@ -1,5 +1,5 @@
 {
-    "name": "hansschouten/laravel-pagebuilder",
+    "name": "improvit17/laravel-pagebuilder",
     "description": "A drag and drop pagebuilder to manage pages in any Laravel project.",
     "keywords": [
         "laravel",
@@ -9,8 +9,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Hans Schouten",
-            "email": "hans@falcosolutions.nl"
+            "name": "improvit",
+            "email": "info@improvit.nl"
         }
     ],
     "require": {
